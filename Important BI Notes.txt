@@ -1,0 +1,204 @@
+Some Important Notes
+
+Optimized with different hyper-parameters including learning rate, filter size, no. of
+layers, optimizers, dropouts, etc.
+
+
+
+1) Dropout
+Randomly turns off neurons during training to prevent overfitting.
+
+Dropout = 0.5 → 50% neurons ignored per iteration
+
+Effect:
+Reduces overfitting
+Improves generalization
+
+Key Insight:
+Too high → underfitting
+Too low → overfitting
+
+========================================================
+
+
+
+2) Batch Size
+Number of samples processed before updating weights.
+
+Examples:
+Batch size = 32 (common)
+128 (faster, needs more memory)
+
+Effect:
+Small batch → noisy but better generalization
+Large batch → faster but may overfit
+
+========================================================
+
+
+3) Number of Epochs
+Number of times the model sees the full dataset.
+
+Few epochs → underfitting
+Too many → overfitting
+
+👉 Use early stopping to avoid over-training.
+
+========================================================
+
+
+4)  Optimizers: Adam, SGD, RMSProp
+🔹 SGD (Stochastic Gradient Descent)
+
+Idea:
+Updates weights using gradients for each batch.
+
+Formula (concept):
+w=w−η⋅∇L
+η = learning rate
+∇L = gradient
+
+Pros:
+Simple and stable
+Good generalization
+
+Cons:
+Slow convergence
+Can get stuck in local minima
+
+========================================================
+
+🔹 RMSProp (Root Mean Square Propagation)
+
+Idea:
+Adapts learning rate for each parameter using recent gradients.
+Keeps moving average of squared gradients
+Reduces oscillations
+
+Pros:
+Faster than SGD
+Good for non-stationary problems
+
+========================================================
+
+🔹 Adam (Adaptive Moment Estimation)
+
+Idea: Combines:
+
+Momentum (like velocity)
+RMSProp (adaptive learning rate)
+
+👉 Most commonly used optimizer
+
+Pros:
+Fast convergence
+Works well in most cases
+Less tuning required
+
+Cons:
+Sometimes slightly worse generalization than SGD
+
+
+🔥 Quick Comparison
+| Optimizer | Speed  | Stability | Usage                             |
+| ---------          | ------ | ---------               | --------------------------------- |
+| SGD               | Slow   | High                 | When you want best generalization |
+| RMSProp     | Medium | Good            | RNNs, unstable training           |
+| Adam             | Fast   | Very good | Default choice                    |
+
+========================================================
+
+
+What is loss = 'categorical_crossentropy'
+
+Definition:
+A loss function used for multi-class classification.
+
+👉 It measures how far predicted probabilities are from actual labels.
+
+========================================================
+
+
+CIFAR-10 Dataset
+
+Definition:
+A popular image dataset used for training CNN models.
+
+📊 Details:
+60,000 images
+Size: 32×32 pixels
+10 classes:
+Airplane, Automobile, Bird, Cat, Deer
+Dog, Frog, Horse, Ship, Truck
+
+👉 Used for:
+
+Image classification
+Deep learning experiments
+
+
+========================================================
+
+
+
+What is GAN (Generative Adversarial Network)
+
+Definition:
+A model that generates new data similar to real data.
+
+👉 Proposed by Ian Goodfellow
+
+🧠 Idea:
+
+Two networks compete:
+
+Generator → creates fake data
+Discriminator → detects real vs fake
+
+👉 Like a forger vs police game
+
+⚔️ 5. Generator vs Discriminator
+🔹 Generator
+Takes random noise as input
+Produces fake images
+
+👉 Goal: Fool the discriminator
+
+🔹 Discriminator
+Takes image as input
+Outputs:
+Real (1)
+Fake (0)
+
+👉 Goal: Detect fake images
+
+🔁 Training Process
+Generator creates fake image
+Discriminator checks it
+Both improve together
+
+👉 Over time → Generator produces realistic images
+
+
+========================================================
+
+
+🔄 6. What are Epochs
+
+Definition:
+One complete pass of the model through the entire dataset.
+
+📌 Example:
+Dataset = 1000 images
+Batch size = 100
+
+👉 1 epoch = 10 iterations
+
+🔍 Key Insight:
+Few epochs → underfitting
+Too many → overfitting
+
+👉 Use:
+
+Early stopping
+Validation data
